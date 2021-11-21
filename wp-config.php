@@ -20,22 +20,53 @@
 
 // ** Impostazioni MySQL - È possibile ottenere queste informazioni dal proprio fornitore di hosting ** //
 /** Il nome del database di WordPress */
-define( 'DB_NAME', 'rondasolidarieta' );
+//define( 'DB_NAME', 'rondasolidarieta' );
 
 /** Nome utente del database MySQL */
-define( 'DB_USER', 'admin' );
+//define( 'DB_USER', 'admin' );
 
 /** Password del database MySQL */
-define( 'DB_PASSWORD', '^IXj4KlULRzWCSF%*o' );
+//define( 'DB_PASSWORD', '^IXj4KlULRzWCSF%*o' );
 
 /** Hostname MySQL  */
-define( 'DB_HOST', 'localhost' );
+//define( 'DB_HOST', 'localhost' );
 
 /** Charset del Database da utilizzare nella creazione delle tabelle. */
-define( 'DB_CHARSET', 'utf8mb4' );
+//define( 'DB_CHARSET', 'utf8mb4' );
 
 /** Il tipo di Collazione del Database. Da non modificare se non si ha idea di cosa sia. */
+//define('DB_COLLATE', '');
+
+// ** MySQL settings - You can get this info from your web host ** //
+$url = parse_url(getenv('DATABASE_URL') ? getenv('DATABASE_URL') : getenv('CLEARDB_DATABASE_URL'));
+
+/** The name of the database for WordPress */
+define('DB_NAME', trim($url['path'], '/'));
+
+/** MySQL database username */
+define('DB_USER', $url['user']);
+
+/** MySQL database password */
+define('DB_PASSWORD', $url['pass']);
+
+/** MySQL hostname */
+define('DB_HOST', $url['host']);
+
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
+
+/** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
+
+
+define('AUTH_KEY',         getenv('AUTH_KEY'));
+define('SECURE_AUTH_KEY',  getenv('SECURE_AUTH_KEY'));
+define('LOGGED_IN_KEY',    getenv('LOGGED_IN_KEY'));
+define('NONCE_KEY',        getenv('NONCE_KEY'));
+define('AUTH_SALT',        getenv('AUTH_SALT'));
+define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
+define('LOGGED_IN_SALT',   getenv('LOGGED_IN_SALT'));
+define('NONCE_SALT',       getenv('NONCE_SALT'));
 
 /**#@+
  * Chiavi Univoche di Autenticazione e di Salatura.
